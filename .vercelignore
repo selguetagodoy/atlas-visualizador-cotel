@@ -1,0 +1,6 @@
+.chrome-qa*
+.playwright-cli/
+output/
+qa_*
+scripts/
+README.md

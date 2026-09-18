@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explora la realidad digital de tu comuna · COTEL</title>
+    <meta
+      name="description"
+      content="Visualizador comunal con conectividad, velocidad, brecha digital e indicadores censales del Atlas de la Desconexión Digital 2026."
+    />
+    <meta name="author" content="Sebastián Elgueta Godoy" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <link rel="canonical" href="https://atlas-visualizador-cotel.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Atlas de la Desconexión Digital 2026 · COTEL" />
+    <meta property="og:description" content="Explora conectividad, velocidad, brecha digital e indicadores territoriales de las comunas de Chile." />
+    <meta property="og:url" content="https://atlas-visualizador-cotel.vercel.app/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Atlas de la Desconexión Digital 2026",
+        "url": "https://atlas-visualizador-cotel.vercel.app/",
+        "description": "Visualizador comunal de conectividad, brecha digital e indicadores territoriales de Chile.",
+        "applicationCategory": "DataVisualization",
+        "inLanguage": "es-CL",
+        "creator": {
+          "@type": "Person",
+          "name": "Sebastián Elgueta Godoy",
+          "url": "https://selguetagodoy.github.io/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "COTEL",
+          "url": "https://cotel.cl/"
+        }
+      }
+    </script>
+    <link rel="icon" href="public/assets/logotipo-COTEL-VerdeFull.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Atlas de la Desconexión Digital 2026</div>
+        <h1>Explora la realidad digital de tu comuna</h1>
+      </div>
+      <img src="public/assets/logotipo-COTEL-VerdeFull.png" alt="COTEL" />
+    </header>
+
+    <main class="app-shell">
+      <section class="summary-band" aria-label="Resumen nacional">
+        <article>
+          <span>sin internet</span>
+          <strong id="statNoInternet">--</strong>
+          <small>hogares</small>
+        </article>
+        <article>
+          <span>solo móvil</span>
+          <strong id="statSoloMovil">--</strong>
+          <small>hogares</small>
+        </article>
+        <article class="hero-stat">
+          <span>sin conexión útil</span>
+          <strong id="statFunctional">--</strong>
+          <small id="statFunctionalPct">--</small>
+        </article>
+        <article>
+          <span>comunas analizadas</span>
+          <strong id="statCommunes">--</strong>
+          <small>territorios</small>
+        </article>
+      </section>
+
+      <section class="download-band" aria-label="Descarga del estudio completo">
+        <div>
+          <span class="section-label">Estudio completo</span>
+          <p>Descarga la versión final del Atlas de la Desconexión Digital 2026 en PDF.</p>
+        </div>
+        <a
+          class="download-link"
+          href="public/docs/Atlas_Desconexion_Digital_2026.pdf"
+          download="Atlas_Desconexion_Digital_2026.pdf"
+        >
+          Descargar estudio completo
+        </a>
+      </section>
+
+      <section class="controls" aria-label="Controles del visualizador">
+        <label>
+          Indicador
+          <select id="indicatorSelect"></select>
+        </label>
+        <label>
+          Región
+          <select id="regionSelect"></select>
+        </label>
+        <label class="search-box">
+          Buscar comuna
+          <input id="communeSearch" type="search" placeholder="Ej. Colchane, Puente Alto, Saavedra" />
+        </label>
+      </section>
+
+      <section class="main-grid">
+        <article class="panel map-panel">
+          <div class="panel-head">
+            <div>
+              <span class="section-label">Mapa comunal</span>
+              <h2 id="mapTitle">Chile completo</h2>
+            </div>
+            <p id="mapReading">Cada comuna se colorea según el indicador seleccionado.</p>
+          </div>
+          <div class="map-wrap">
+            <svg id="mapSvg" role="img" aria-label="Mapa comunal de Chile"></svg>
+            <div id="tooltip" class="tooltip" hidden></div>
+          </div>
+          <div id="legend" class="legend"></div>
+        </article>
+
+        <aside class="side-column">
+          <article class="panel commune-card">
+            <span class="section-label">Ficha comunal</span>
+            <h2 id="communeName">Selecciona una comuna</h2>
+            <p id="communeSummary">Haz clic en el mapa o usa el buscador para ver el detalle.</p>
+            <div id="communeMetrics" class="commune-metrics"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head compact">
+              <div>
+                <span class="section-label">Ranking</span>
+                <h2 id="rankingTitle">Comunas destacadas</h2>
+              </div>
+            </div>
+            <ol id="rankingList" class="ranking-list"></ol>
+          </article>
+        </aside>
+      </section>
+
+      <section class="story-grid">
+        <article class="panel scatter-panel">
+          <div class="panel-head">
+            <div>
+              <span class="section-label">IVD</span>
+              <h2>Donde se juntan desconexión y dificultad, aparece la urgencia</h2>
+            </div>
+            <p>Cada punto es una comuna. Arriba y a la derecha, la brecha pesa más en la vida diaria.</p>
+          </div>
+          <svg id="scatterSvg" role="img" aria-label="Dispersión IVD"></svg>
+        </article>
+
+        <article class="panel methodology-panel">
+          <span class="section-label">Método</span>
+          <h2>Qué mide el IVD</h2>
+          <p>
+            El Índice de Vulnerabilidad Digital cruza acceso, tipo de conexión, capacidad del hogar
+            y condiciones sociales. El resultado se reescala de 0 a 100: mientras más alto, más
+            difícil es usar la red con autonomía.
+          </p>
+          <div class="method-steps">
+            <span>Censo 2024</span>
+            <span>CASEN 2024</span>
+            <span>Escala comunal</span>
+            <span>0 a 100</span>
+          </div>
+          <p class="green-callout">
+            El IVD transforma la brecha digital en una decisión territorial: dónde partir, dónde
+            invertir y qué resolver.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      Fuente: Atlas 2026, Censo 2024, CASEN 2024 y Ookla Q1 2026. Creado por Sebastián Elgueta Godoy,
+      sociólogo e investigador en políticas públicas y transformación digital.
+      Contacto: <a href="mailto:e.elguetagodoy@gmail.com">e.elguetagodoy@gmail.com</a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

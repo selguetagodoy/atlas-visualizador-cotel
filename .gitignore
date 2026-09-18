@@ -1,0 +1,6 @@
+.vercel
+*.log
+Thumbs.db
+.DS_Store
+
+.vercel
