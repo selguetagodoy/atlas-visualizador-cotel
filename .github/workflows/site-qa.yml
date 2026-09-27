@@ -1,0 +1,37 @@
+name: Visualizer QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "README.md"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "styles.css"
+      - "app.js"
+      - "public/**"
+      - "scripts/site_qa.py"
+      - ".github/workflows/site-qa.yml"
+  schedule:
+    - cron: "40 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-visualizer-qa
+  cancel-in-progress: true
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Validate visualizer
+        run: python scripts/site_qa.py
