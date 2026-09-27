@@ -1,37 +1,52 @@
-# Atlas de la Desconexion Digital 2026 - Visualizador COTEL
+# Atlas de la Desconexión Digital de Chile 2026 — Visualizador público
 
-Visualizador editorial estatico para explorar el Atlas a escala comunal.
+Visualizador comunal asociado al **Atlas de la Desconexión Digital de Chile 2026**, investigación desarrollada por **Sebastián Elgueta Godoy** y difundida públicamente por COTEL.
 
-## Que incluye
+**Proyecto canónico:** https://selguetagodoy.github.io/atlas-desconexion-digital-chile.html  
+**Visualizador:** https://atlas-visualizador-cotel.vercel.app/  
+**Repositorio de investigación:** https://github.com/selguetagodoy/atlas-desconexion-digital-chile.  
+**Version DOI:** https://doi.org/10.5281/zenodo.22921209  
+**Concept DOI:** https://doi.org/10.5281/zenodo.22921208
 
-- Mapa comunal de Chile con indicadores seleccionables.
-- Buscador de comuna.
-- Ranking por indicador y region.
-- Ficha comunal con sin internet, solo movil, internet fijo, computador e IVD.
-- Scatter IVD: hogares sin internet vs vulnerabilidad digital.
-- Nota metodologica simple para prensa.
+> COTEL participa como espacio de presentación y difusión sectorial. La autoría de la investigación, del Atlas y de la base asociada corresponde a Sebastián Elgueta Godoy.
 
-## Datos
+## Qué incluye
 
-El archivo `scripts/build-data.ps1` genera:
+- mapa comunal de Chile con indicadores seleccionables;
+- buscador por comuna;
+- ranking por indicador y región;
+- ficha comunal con hogares sin Internet, dependencia móvil, Internet fijo, computador e IVD;
+- dispersión entre hogares sin Internet y vulnerabilidad digital;
+- síntesis metodológica para consulta pública;
+- acceso al documento del Atlas disponible en el visualizador.
+
+## Datos y generación
+
+El script `scripts/build-data.ps1` genera los artefactos públicos utilizados por la aplicación:
 
 - `public/data/atlas.json`
 - `public/data/comunas.geojson`
 
-Fuentes locales usadas:
+Los insumos analíticos originales y las capas fuente se gestionan fuera de este repositorio de interfaz. Este repositorio **no reemplaza** el repositorio canónico de investigación ni constituye una publicación independiente de la base completa.
 
-- `C:\Users\sebas\Desktop\abril 2026\master_atlas_epf_desconexion_comunal.csv`
-- `C:\Users\sebas\Desktop\atlas_cotel_codex_work\shapes\Comunas\comunas.shp`
-- `C:\Users\sebas\Desktop\atlas_cotel_codex_work\shapes\Comunas\comunas.dbf`
+## Trazabilidad
+
+Para metodología, fuentes, citación y límites de publicación, consultar:
+
+- [Atlas — ficha canónica](https://selguetagodoy.github.io/atlas-desconexion-digital-chile.html)
+- [Repositorio de investigación](https://github.com/selguetagodoy/atlas-desconexion-digital-chile.)
+- [Source of Truth](https://github.com/selguetagodoy/atlas-desconexion-digital-chile./blob/main/SOURCE_OF_TRUTH.md)
+- [Version DOI](https://doi.org/10.5281/zenodo.22921209)
+- [Índice de Vulnerabilidad Digital](https://selguetagodoy.github.io/indice-vulnerabilidad-digital-chile.html)
 
 ## Desarrollo local
 
-Este prototipo no requiere npm ni build step. Puede abrirse con cualquier servidor estatico.
+Es una aplicación estática. No requiere npm ni un build step para servir la interfaz.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1
 ```
 
-## Vercel
+## Despliegue
 
-Es un sitio estatico listo para publicar en Vercel desde esta carpeta.
+El proyecto está preparado para despliegue estático en Vercel. `robots.txt` y `sitemap.xml` apuntan a la URL pública del visualizador.
