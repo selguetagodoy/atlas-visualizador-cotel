@@ -1,5 +1,7 @@
 # Atlas de la Desconexión Digital de Chile 2026 — Visualizador público
 
+[![Visualizer QA](https://github.com/selguetagodoy/atlas-visualizador-cotel/actions/workflows/site-qa.yml/badge.svg)](https://github.com/selguetagodoy/atlas-visualizador-cotel/actions/workflows/site-qa.yml)
+
 Visualizador comunal asociado al **Atlas de la Desconexión Digital de Chile 2026**, investigación desarrollada por **Sebastián Elgueta Godoy** y difundida públicamente por COTEL.
 
 **Proyecto canónico:** https://selguetagodoy.github.io/atlas-desconexion-digital-chile.html  
