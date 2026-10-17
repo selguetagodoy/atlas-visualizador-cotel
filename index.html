@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Explora la realidad digital de tu comuna · COTEL</title>
+    <title>Atlas de la Desconexión Digital 2026 | Visualizador comunal</title>
     <meta
       name="description"
       content="Visualizador comunal con conectividad, velocidad, brecha digital e indicadores censales del Atlas de la Desconexión Digital 2026."
@@ -12,11 +12,11 @@
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <link rel="canonical" href="https://atlas-visualizador-cotel.vercel.app/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Atlas de la Desconexión Digital 2026 · COTEL" />
+    <meta property="og:title" content="Atlas de la Desconexión Digital 2026 | Visualizador comunal" />
     <meta property="og:description" content="Explora conectividad, velocidad, brecha digital e indicadores territoriales de las comunas de Chile." />
     <meta property="og:url" content="https://atlas-visualizador-cotel.vercel.app/" />
     <meta property="og:image" content="https://selguetagodoy.github.io/assets/social/atlas-desconexion-digital-chile.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Atlas de la Desconexión Digital 2026 | Visualizador comunal" />
     <meta name="twitter:image" content="https://selguetagodoy.github.io/assets/social/atlas-desconexion-digital-chile.png" />
     <script type="application/ld+json">
 {
@@ -52,15 +52,22 @@
 }
     </script>
     <link rel="icon" href="public/assets/logotipo-COTEL-VerdeFull.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261016-editorial" />
   </head>
   <body>
+    <a class="skip-link" href="#mapa-comunal">Saltar al mapa comunal</a>
+    <nav class="portfolio-nav" aria-label="Identidad y enlaces del proyecto">
+      <a class="portfolio-brand" href="https://selguetagodoy.github.io/" aria-label="Sitio de Sebastián Elgueta Godoy"><strong>Sebastián Elgueta Godoy</strong><span>Asuntos públicos · Investigación aplicada</span></a>
+      <div class="portfolio-links"><a href="https://selguetagodoy.github.io/atlas-desconexion-digital-chile.html">Estudio y fuentes</a><a href="https://github.com/selguetagodoy/atlas-visualizador-cotel" target="_blank" rel="noopener noreferrer">Código en GitHub ↗</a><a class="portfolio-return" href="https://selguetagodoy.github.io/">Sitio personal ↗</a></div>
+    </nav>
     <header class="topbar">
       <div>
-        <div class="eyebrow">Atlas de la Desconexión Digital 2026</div>
-        <h1>Explora la realidad digital de tu comuna</h1>
+        <div class="eyebrow">Atlas de la Desconexión Digital / Chile 2026</div>
+        <h1>Explora la realidad digital de tu comuna.</h1>
+        <p class="topbar-subtitle">Mapas, indicadores y comparaciones territoriales para comprender las brechas de conectividad en Chile.</p>
+        <div class="atlas-credits" aria-label="Créditos del proyecto"><span><strong>Investigación y desarrollo</strong> Sebastián Elgueta Godoy</span><span><strong>Presentación y difusión sectorial</strong> COTEL</span></div>
       </div>
-      <img src="public/assets/logotipo-COTEL-VerdeFull.png" alt="COTEL" />
+      <div class="cotel-credit"><span>Difusión sectorial</span><img src="public/assets/logotipo-COTEL-VerdeFull.png" alt="COTEL" width="150" /></div>
     </header>
 
     <main class="app-shell">
@@ -118,7 +125,7 @@
       </section>
 
       <section class="main-grid">
-        <article class="panel map-panel">
+        <article class="panel map-panel" id="mapa-comunal">
           <div class="panel-head">
             <div>
               <span class="section-label">Mapa comunal</span>
@@ -187,11 +194,10 @@
       </section>
     </main>
 
-    <footer>
-      Fuente: Atlas de la Desconexión Digital de Chile 2026, Censo 2024, CASEN 2024 y Ookla Q1 2026. Investigación creada por Sebastián Elgueta Godoy,
-      sociólogo e investigador en políticas públicas y transformación digital.
-      Contacto: <a href="mailto:e.elguetagodoy@gmail.com">e.elguetagodoy@gmail.com</a>
-    </footer>
+    <footer class="atlas-footer"><div class="atlas-footer-grid">
+      <div><strong>Atlas de la Desconexión Digital de Chile 2026</strong><p>Investigación y desarrollo del visualizador — Sebastián Elgueta Godoy. Presentación y difusión sectorial por COTEL.</p><p>Fuentes declaradas en el estudio: Censo 2024, CASEN 2024 y Ookla Q1 2026. Metodología y referencia citable disponibles en la ficha del estudio.</p></div>
+      <div class="atlas-footer-links"><a href="https://selguetagodoy.github.io/atlas-desconexion-digital-chile.html">Estudio y metodología ↗</a><a href="https://github.com/selguetagodoy/atlas-visualizador-cotel" target="_blank" rel="noopener noreferrer">Código en GitHub ↗</a><a href="https://selguetagodoy.github.io/">Sitio de Sebastián Elgueta Godoy ↗</a><a href="mailto:e.elguetagodoy@gmail.com">Contacto</a></div>
+    </div></footer>
 
     <script src="app.js"></script>
   </body>
