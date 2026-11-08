@@ -31,6 +31,12 @@ El script `scripts/build-data.ps1` genera los artefactos públicos utilizados po
 
 Los insumos analíticos originales y las capas fuente se gestionan fuera de este repositorio de interfaz. Este repositorio **no reemplaza** el repositorio canónico de investigación ni constituye una publicación independiente de la base completa.
 
+**Cómo interpretar el repositorio:**
+
+- El **Atlas** es el proyecto de investigación y la referencia metodológica y citable.
+- El **visualizador** es la interfaz pública para explorar indicadores seleccionados; su código y artefactos de publicación no equivalen a la base analítica íntegra.
+- Los mapas y rankings deben leerse con las definiciones y restricciones metodológicas publicadas en la [ficha canónica](https://selguetagodoy.github.io/atlas-desconexion-digital-chile.html).
+
 ## Trazabilidad
 
 Para metodología, fuentes, citación y límites de publicación, consultar:
